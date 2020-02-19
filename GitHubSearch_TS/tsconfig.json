@@ -1,0 +1,13 @@
+{
+    "compileOnSave" :true,
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "outDir": "./Scripts/GitHubSearch_JS",
+    "rootDir": "./Typescript",
+    "plugins": [
+        { "name": "typescript-tslint-plugin" }
+      ]
+  }
+}
