@@ -6,3 +6,5 @@ The result will show users name, location, avatar along with the top five reposi
 The code is written in typescript and contains some jasmine tests.
 The jasmine tests can be executed displaying the SpecRunner.html file in a browser.
 The tests use the repository ascrees.
+
+![image](https://user-images.githubusercontent.com/28151071/77829841-7a1d8780-711c-11ea-9bea-d80f5861229a.png)
