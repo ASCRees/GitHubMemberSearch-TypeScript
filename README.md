@@ -1,10 +1,9 @@
 # README
 
-This repository holds an example of performing a search of the GitHub repository by username from a single html page.
-The result will show users name, location, avatar along with the top five repositories based upon star gazer rating.
+GitHubMemberSearch-Typescript is a simple one page Typescript application that allows the user to search github.com for a user, based upon their username and will display their name, location and avatar, along with the the top five repositories based upon stargazer rating. If no results are found the system will display an appropriate message.
 
-The code is written in typescript and contains some jasmine tests.
-The jasmine tests can be executed displaying the SpecRunner.html file in a browser.
-The tests use the repository ascrees.
+The code demonstrates an example of using promises to perform the asynchronous fetch. 
+
+The jasmine unit tests can be executed displaying the SpecRunner.html file in a browser.
 
 ![image](https://user-images.githubusercontent.com/28151071/77829841-7a1d8780-711c-11ea-9bea-d80f5861229a.png)
