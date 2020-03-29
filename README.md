@@ -1,6 +1,6 @@
-# README
+# GitHubMemberSearch-Typescript
 
-GitHubMemberSearch-Typescript is a simple one page Typescript application that allows the user to search github.com for a user, based upon their username and will display their name, location and avatar, along with the the top five repositories based upon stargazer rating. If no results are found the system will display an appropriate message.
+This is a simple one page Typescript application that allows the user to search github.com for a user, based upon their username and will display their name, location and avatar, along with the the top five repositories based upon stargazer rating. If no results are found the system will display an appropriate message.
 
 The code demonstrates an example of using promises to perform the asynchronous fetch. 
 
