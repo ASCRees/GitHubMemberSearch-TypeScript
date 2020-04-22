@@ -1,4 +1,3 @@
-//const fetch = require("node-fetch");
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,20 +7,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-;
-;
 const ReposHeader = {
     Repos_UserName: "",
     Repos_UserLocation: "",
     Repos_AvatarImageURL: "",
-    Repos_Repos_URL: ""
+    Repos_Repos_URL: "",
 };
 const ReposGrid = {
     Repos_URL: "",
     Repos_Name: "",
     Repos_FullName: "",
     Repos_Description: "",
-    Repos_StarGazers: ""
+    Repos_StarGazers: "",
 };
 String.prototype.format = function () {
     let a = this;
@@ -34,8 +31,6 @@ class BuildSearchResults {
     constructor() {
         this.RootURL = "";
         this.UserURL = "";
-        this.DefaultUrl = this.RootURL + this.UserURL;
-        this.ResultsGridBody = "";
         this.headerTable = `<table class="table" id="userDetailsTable">
     <tr>
     <th>Name </th>
@@ -76,8 +71,8 @@ class BuildSearchResults {
                                             The user does not have any repository items
                                         </td>
                                         </tr>`;
-        this.RootURL = 'https://api.github.com';
-        this.UserURL = '/users/{0}';
+        this.RootURL = "https://api.github.com";
+        this.UserURL = "/users/{0}";
     }
     buildHeaderResponse(response) {
         ReposHeader.Repos_UserName = response.name;
@@ -91,14 +86,16 @@ class BuildSearchResults {
         return responseStr;
     }
     buildBodyResponse(response) {
-        let returnval = response.sort((a, b) => b.stargazers_count - a.stargazers_count).slice(0, 5).
-            map(element => {
+        let returnval = response
+            .sort((a, b) => b.stargazers_count - a.stargazers_count)
+            .slice(0, 5)
+            .map((element) => {
             let reposGrid = {
                 Repos_URL: element.html_url,
                 Repos_Name: element.name,
                 Repos_FullName: element.full_name,
                 Repos_Description: element.description,
-                Repos_StarGazers: element.stargazers_count
+                Repos_StarGazers: element.stargazers_count,
             };
             return reposGrid;
         });
@@ -106,12 +103,13 @@ class BuildSearchResults {
     }
     GetUserRepositories(reposURL) {
         return __awaiter(this, void 0, void 0, function* () {
-            let bodystr = "";
-            let returnVal = yield fetch(// Using the fetch command to asynchronously call the web api.
-            reposURL, { method: 'GET' })
-                .then(response => response.json())
-                .then(data => this.buildBodyResponse(data))
-                .then(rbody => {
+            let bodystr = null;
+            let returnVal = yield fetch(
+            // Using the fetch command to asynchronously call the web api.
+            reposURL, { method: "GET" })
+                .then((response) => response.json())
+                .then((data) => this.buildBodyResponse(data))
+                .then((rbody) => {
                 if (rbody.length > 0) {
                     bodystr = this.resultsGridFrame.format(this.buildBodyString(rbody));
                 }
@@ -119,7 +117,9 @@ class BuildSearchResults {
                     bodystr = this.resultsGridFrame.format(this.noRepositoryItems);
                 }
             })
-                .catch(error => console.error('error:', error));
+                .catch((error) => {
+                throw new Error(error);
+            });
             return bodystr;
         });
     }
@@ -127,13 +127,15 @@ class BuildSearchResults {
         let returnVal = rbody.map((a) => this.resultGridBody.format(a.Repos_URL, a.Repos_Name, a.Repos_FullName, a.Repos_Description, a.Repos_StarGazers)).join("");
         return returnVal;
     }
-    GetUserHeader(userName) {
+    GetUserHeader(userName // Using a promise to call the web api. Then get the response before pushing the output to be displayed
+    ) {
         return __awaiter(this, void 0, void 0, function* () {
             let headerstr;
             let bodystr = "";
-            let returnVal = yield fetch(// Using the fetch command to asynchronously call the web api.
-            "https://api.github.com/users/" + userName, { method: 'GET' })
-                .then(response => {
+            let returnVal = yield fetch(
+            // Using the fetch command to asynchronously call the web api.
+            this.RootURL + this.UserURL.format(userName), { method: "GET" })
+                .then((response) => {
                 if (response && response.ok) {
                     return response.json();
                 }
@@ -141,19 +143,21 @@ class BuildSearchResults {
                     throw new Error("Unable to find the user");
                 }
             })
-                .then(data => {
+                .then((data) => {
                 headerstr = this.buildHeaderResponse(data);
                 return headerstr;
             })
-                .then(rhead => {
+                .then((rhead) => {
                 return this.GetUserRepositories(rhead.Repos_Repos_URL);
             })
-                .then(rbody => {
+                .then((rbody) => {
                 let header = this.buildHeaderResponseString(headerstr);
                 let body = rbody;
                 bodystr = header + body;
             })
-                .catch(error => console.error('error:', error));
+                .catch((error) => {
+                throw new Error(error);
+            });
             return bodystr;
         });
     }
