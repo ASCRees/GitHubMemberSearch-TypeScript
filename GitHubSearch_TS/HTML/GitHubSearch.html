@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> - Git Hub Search</title>
     <link href="../CSS/bootstrap.css" rel="stylesheet" />
     <link href="../CSS/site.css" rel="stylesheet" />
-    <script src="/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="../Scripts/jquery-3.4.1.min.js"></script>
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -23,36 +25,39 @@
     </div>
     <div class="container body-content">
         <br />
-            <input name="__RequestVerificationToken" type="hidden" value="RLUc22klUD7IDixHFS9OUDdb0vscAlX3wbLgIjdz0QYTnmsHir3G6pjzixizdXVsxovahGZyqGZUSusSmEQ_QzAw9kQ_PqlMe2WPsUvHOvY1" />    <table>
-                <tr>
-                    <td>
-                        Enter User Name
-                        <input data-val="true" data-val-required="User Name is required" id="userName" name="UserNameSearch" onkeyup="onchangeusernameevent(this);" type="text" value="ascrees" />
-                        <span class="field-validation-valid field-validation-error" data-valmsg-for="UserNameSearch" data-valmsg-replace="true"></span>
+        <table>
+            <tr>
+                <td>
+                    Enter User Name
+                    <input data-val="true" data-val-required="User Name is required" id="userName" name="UserNameSearch"
+                        onkeyup="onchangeusernameevent(this);" type="text" value="ascrees" />
+                    <span class="field-validation-valid field-validation-error" data-valmsg-for="UserNameSearch"
+                        data-valmsg-replace="true"></span>
 
-                        <input type="submit" name="GitSearch" value="Search" id="GitHubSearchButton" />
-                        <div class="userNameErrorDiv">
+                    <input type="submit" name="GitSearch" value="Search" id="GitHubSearchButton" />
+                    <div class="userNameErrorDiv">
 
-                        </div>
-                    </td>
-                </tr>
-            </table>           
+                    </div>
+                </td>
+            </tr>
+        </table>
         <br />
         <br />
         <div id="SearchResults" class="SearchResultsTableDiv">
         </div>
         <hr />
         <footer>
-            <p>&copy; 2020 - Git Hub Search</p>
+            <p>&copy; 2020 - Git Hub Search - Typescript Version</p>
         </footer>
     </div>
 
- 
-    <script src="./Scripts/bootstrap.js"></script>
+
+    <script src="../Scripts/bootstrap.js"></script>
 
     <script src="../Scripts/validate.input.js"></script>
     <script src="../Scripts/GitHubSearch_JS/GitHubSearchRun.js"></script>
     <script src="../Scripts/GitHubSearch_JS/GitHubSearchLib.js"></script>
 
 </body>
+
 </html>
