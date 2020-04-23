@@ -6,4 +6,4 @@ The code demonstrates an example of using promises to perform the asynchronous f
 
 The jasmine unit tests can be executed displaying the SpecRunner.html file in a browser.
 
-![image](https://user-images.githubusercontent.com/28151071/77829841-7a1d8780-711c-11ea-9bea-d80f5861229a.png)
+![image](https://user-images.githubusercontent.com/28151071/80088326-43d4fb80-8554-11ea-986c-bca36cd2a710.png)
